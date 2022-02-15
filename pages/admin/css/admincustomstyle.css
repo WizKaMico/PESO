@@ -1,0 +1,13 @@
+/*HIDE SPINNER ARROW*/
+/*CHROME, OPERA*/
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button 
+{ 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+/*MOZILLA*/
+input[type=number] {
+  -moz-appearance: textfield;
+}

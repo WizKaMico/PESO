@@ -1,0 +1,45 @@
+.left-col, .right-col{
+	height: 650px; 
+	max-height: 650px;
+}
+.new-message-btn{
+	margin-top: 5px; 
+	margin-bottom: 5px;
+}
+.recipient-card{
+	margin-top: 5px;
+	margin-bottom: 5px; 
+	height: 600px; 
+	max-height: 535px; 
+	overflow: auto;
+}
+.card-user{
+	margin-top: 5px; 
+	margin-bottom: 5px;
+}
+.conversation-card{
+	height: 4000px; 
+	max-height: 400px; 
+	margin-bottom: 10px; 
+	overflow: auto ;
+}
+.recipient-message, .sender-message{
+	margin-top: 5px; 
+	margin-bottom: 5px;
+}
+.reply-text{
+	height: 100px; 
+	max-height: 100px; 
+	margin-top: 5px;
+}
+.recipient-text, .message-text{
+	margin-top: 5px; 
+	margin-bottom: 5px;
+}
+.username-card{
+	margin-top: 5px; 
+	margin-bottom: 5px;
+}
+.message-receipints{
+    
+}

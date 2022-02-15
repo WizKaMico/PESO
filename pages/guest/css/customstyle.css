@@ -1,0 +1,80 @@
+/*GALLERY*/
+.coord_photo {
+    margin-bottom: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.coord_photo img {
+    width: 20vw;
+    height: 20vw;
+}
+
+.coord_photo-cover img {
+    object-fit: cover;
+}
+
+/*DROPDOWN SCROLLABLE NOTICATION MESSAGES*/
+.scrollable-menu {
+    height: auto;
+    max-height: 300px;
+    width: auto;
+    max-width: 600px;
+    overflow-x: hidden;
+}
+
+/*DROPDOWN MESSAGE*/
+a,
+.messagebox {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover,
+.messagebox {
+    color: black;
+}
+
+/*INBOX*/
+tr[data-href] {
+    cursor: pointer;
+
+}
+
+tr[data-href]:hover {
+    cursor: pointer;
+    background-color: #f2f2f2;
+}
+
+/*MODAL IMAGES*/
+.imgpreview {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.imgpreview > img {
+    max-width: 900px;
+    max-height: 700px;
+}
+
+.imgdesc {
+    font-size: 16px;
+}
+
+/*HIDE SPINNER ARROW*/
+/*CHROME, OPERA*/
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button 
+{ 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+/*MOZILLA*/
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
