@@ -95,6 +95,7 @@ if (isset($_SESSION["access"])){
     <div id="wrapper">
 
         <!-- Sidebar -->
+         <!-- Sidebar -->
         <ul class="sidebar navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="index.php">
@@ -108,16 +109,16 @@ if (isset($_SESSION["access"])){
                     <span>Profile</span>
                 </a>
             </li>
+              <li class="nav-item">
+                <a class="nav-link" href="chat.php">
+                    <i class="fas fa-fw fa-id-card-alt"></i>
+                    <span>Chat</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="account.php">
                     <i class="fas fa-fw fa-user-cog"></i>
                     <span>Account</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="post-announcement.php">
-                    <i class="fas fa-fw fa-bullhorn"></i>
-                    <span>Post Announcement</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -129,9 +130,17 @@ if (isset($_SESSION["access"])){
             <li class="nav-item active">
                 <a class="nav-link" href="manage-joblist.php">
                     <i class="fas fa-fw fa-clipboard-list"></i>
-                    <span>Manage Job Vacanies</span>
+                   <span>Post Jobs</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="post-announcement.php">
+                    <i class="fas fa-fw fa-bullhorn"></i>
+                    <span>Post Announcement</span>
+                </a>
+            </li>
+          
+        </ul>
             <hr>
 
             <!-- ARCHIVE PAGE -->
@@ -181,14 +190,7 @@ if (isset($_SESSION["access"])){
                                         <th>Edit</th>
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Job Name</th>
-                                        <th>View</th>
-                                        <th>Edit</th>
-                                    </tr>
-                                </tfoot>
+                              
                                 <tbody>
                                 <?php
                                 $query="SELECT *
@@ -322,7 +324,7 @@ if (isset($_SESSION["access"])){
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="card">
-                                                        <div class="card-header"><span>Announcement Information</span></div>
+                                                        <!--<div class="card-header"><span>Announcement</span></div>-->
                                                         <div class="card-body">
                                                         <form action="../../php-func/admin/UpdateJobListEmployer.php" method="POST">
                                                         <div class="form-group mt-3">

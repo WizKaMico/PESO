@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <?php session_start(); ?>
+<?php include('dbcon.php'); ?>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+<title>Public Employment Service Office - Malolos</title>
+
+<!-- Custom fonts for this template-->
+<link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+<!-- Custom styles for this template-->
+<link href="../../css/sb-admin.min.css" rel="stylesheet">
+
+<style>
+    .responsive{
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        
+    }
+
+</style>
+
+</head>
+
+<body class="bg-image">
+
+    <div class="container">
+        <div class="card mx-auto mt-5 ">
+          <div class="card-header"></div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <img src="../../images/pesologo.png" alt="PESO.png" class="responsive ml-2 d-flex justify-content-center">
+                    </div>
+                    <div class="col-6 mt-10">
+                        <div class="text-center p-5">
+                            <span>Forgot Password | Applicant</span>
+                        </div>
+                        <div class="text-center m-2 p-2">
+                        <?php 
+                        if(isset($_GET['error']) == 'invalidaccess') { 
+                            echo '<div class="form-group">
+                                    <div class="btn btn-danger btn-block">Invalid Username or Password</div>
+                                </div>'; 
+                            } 
+                        ?>
+                        </div>
+                        <form method="post" action="#" novalidate>   
+                            <div class="form-group">
+                                <div class="form-label-group">
+                                    <input type="email"  name="email" id="inputUsername" class="form-control" placeholder="Username" required="required">
+                                    <label for="inputUsername">ENTER EMAIL</label>
+                                </div>
+                            </div>
+
+                            <button type="submit" name="reset" value="Submit" class="btn btn-primary btn-block"><span>RESET PASSWORD</span></button>
+                        </form>
+                        
+                        <?php
+                    	if (isset($_POST['reset']))
+                    		{
+                    			$email = mysqli_real_escape_string($con, $_POST['email']);
+                    			
+                    			
+                    			$query 		= mysqli_query($con, "SELECT *,users.id as UID FROM `applicant_profile` LEFT JOIN users ON applicant_profile.uid = users.id WHERE applicant_profile.email='$email'");
+                    			$row		= mysqli_fetch_array($query);
+                    			$num_row 	= mysqli_num_rows($query);
+                    			
+                    			if ($num_row > 0) 
+                    				{			
+                    				// 	$_SESSION['UID']=$row['UID'];
+                    					header('location:applicant_generate_code.php?uid='.$row['UID']);
+                    					
+                    				}
+                    			else
+                    				{
+                    				    
+                    				     echo '
+                    				     <br>
+                    				     <br>
+                    				     <div class="form-group">
+                                            <div class="btn btn-danger btn-block">Invalid email not in use</div>
+                                        </div>'; 
+                    					
+                    				}
+                    		}
+                      ?>
+                        
+                        <div class="text-center">
+                            <a class="d-block small mt-3" href="login.php">Not an Applicant?</a>
+                            <a class="d-block small mt-3" href="../signup/signup.php">Create an Account?</a>
+                            <a class="d-block small mt-3" href="applicantlogin.php">Already have an account</a>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="../../vendor/jquery/jquery.min.js"></script>
+<script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+</body>
+
+</html>

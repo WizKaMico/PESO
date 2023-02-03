@@ -1,0 +1,35 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  background-color: #121212;
+}
+.marquee__inner {
+  display: flex;
+}
+.marquee__inner h1 {
+  padding-right: 30px;
+  font-size: 10vw;
+  white-space: nowrap;
+  animation: kf-marquee 60s linear infinite;
+  text-shadow: -1px -1px 0 #ccc, 1px -1px 0 #ccc, -1px 1px 0 #ccc, 1px 1px 0 #ccc;
+  color: #141313;
+  transition: color 0.3s linear;
+}
+.marquee__inner h1:hover {
+  color: #fcfcfc;
+}
+
+@keyframes kf-marquee {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}

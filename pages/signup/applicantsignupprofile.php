@@ -628,7 +628,7 @@ window.onload = function() {
                                     while($row = $result->fetch_assoc()){;
                                         $uid = $row['id'];
                                 ?>
-                                <input type="text" name="uid" value="<?php echo $uid; ?>">
+                                <input type="hidden" name="uid" value="<?php echo $uid; ?>">
                                 <?php } ?>
                     </div>
                     </form>

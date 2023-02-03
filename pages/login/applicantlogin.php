@@ -25,11 +25,6 @@
         
     }
 
-    .bg-image{
-        background-image: url('../../images/pesobg.png');
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-    }
 </style>
 
 </head>
@@ -71,10 +66,13 @@
                                 </div>
                             </div>
                             <button type="submit" name="signup-submit" value="Submit" class="btn btn-primary btn-block"><span>Login</span></button>
+                            
                         </form>
                         <div class="text-center">
                             <a class="d-block small mt-3" href="login.php">Not an Applicant?</a>
                             <a class="d-block small mt-3" href="../signup/signup.php">Create an Account?</a>
+                              <a class="d-block small mt-3" href=" applicant_forgot.php">Forgot password</a>
+                          
                         </div>
                     </div>
                 </div>

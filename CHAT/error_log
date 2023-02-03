@@ -1,0 +1,15 @@
+[16-Feb-2022 07:26:38 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/u729926683/domains/devcommerceph.store/public_html/PESO/CHAT/conn.php on line 4
+[16-Feb-2022 07:27:55 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'u729926683_pesodb
+'@'2a02:4780:9::2b' (using password: YES) in /home/u729926683/domains/devcommerceph.store/public_html/PESO/CHAT/conn.php on line 5
+[16-Feb-2022 07:28:04 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'u729926683_pesodb
+'@'2a02:4780:9::2b' (using password: YES) in /home/u729926683/domains/devcommerceph.store/public_html/PESO/CHAT/conn.php on line 5
+[16-Feb-2022 07:28:41 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'u729926683_pesodb
+'@'2a02:4780:9::2b' (using password: YES) in /home/u729926683/domains/devcommerceph.store/public_html/PESO/CHAT/conn.php on line 5
+[16-Feb-2022 07:28:50 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'u729926683_pesodb
+'@'2a02:4780:9::2b' (using password: YES) in /home/u729926683/domains/devcommerceph.store/public_html/PESO/CHAT/conn.php on line 5
+[16-Feb-2022 07:58:21 UTC] PHP Notice:  Undefined index: username in /home/u729926683/domains/devcommerceph.store/public_html/PESO/CHAT/index.php on line 6
+[16-Feb-2022 07:58:21 UTC] PHP Notice:  Undefined index: password in /home/u729926683/domains/devcommerceph.store/public_html/PESO/CHAT/index.php on line 7
+[16-Feb-2022 08:16:09 UTC] PHP Notice:  Undefined index: username in /home/u729926683/domains/devcommerceph.store/public_html/PESO/CHAT/index.php on line 6
+[16-Feb-2022 08:16:09 UTC] PHP Notice:  Undefined index: password in /home/u729926683/domains/devcommerceph.store/public_html/PESO/CHAT/index.php on line 7
+[16-Feb-2022 10:38:02 UTC] PHP Notice:  Undefined index: username in /home/u729926683/domains/devcommerceph.store/public_html/PESO/CHAT/index.php on line 6
+[16-Feb-2022 10:38:02 UTC] PHP Notice:  Undefined index: password in /home/u729926683/domains/devcommerceph.store/public_html/PESO/CHAT/index.php on line 7

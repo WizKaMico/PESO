@@ -1,0 +1,4 @@
+[16-Feb-2022 12:24:20 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/applicant/UPLOAD/conn.php on line 2
+[16-Feb-2022 12:25:03 UTC] PHP Notice:  Undefined index: uid in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/applicant/UPLOAD/save.php on line 6
+[16-Feb-2022 12:48:33 UTC] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/applicant/UPLOAD/edit.php on line 17
+[16-Feb-2022 12:52:06 UTC] PHP Warning:  unlink(upload/1645014402.png): No such file or directory in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/applicant/UPLOAD/edit.php on line 15

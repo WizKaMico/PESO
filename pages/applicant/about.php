@@ -41,8 +41,11 @@
 
         <!-- Navbar -->
         <ul class="navbar-nav ml-auto ml-md-0">
+             <li class="nav-item">
+                <a class="nav-link" href="index.php">Home</a>
+            </li>
             <li class="nav-item">
-                <a class="nav-link active" href="index.php">Home</a>
+                <a class="nav-link" href="chat.php">Chat Employer</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="dashboard.php">Dashboard</a>
@@ -50,15 +53,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="announcement.php">Announcement</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="about.php">About Us</a>
-            </li>
+          
             <li class="nav-item">
-                <a class="nav-link" href="contact.php">Contact Us</a>
+                <a class="nav-link active" href="about.php">Contact Us</a>
             </li>
-            <li class="nav-link">
-                <a>||</a>
-            </li>
+          
             <li class="nav-item dropdown no-arrow">
                 <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
             </li>

@@ -28,8 +28,28 @@
 </head>
 
 <body id="page-top">
+    
+    
+    <style>
+    
+    
+        
+#navbar {
+	position: -webkit-sticky;
+	position: sticky;
+ top: 0px; /* When the element reaches top: 10px, it becomes fixed. */
+  z-index: 100;
+}
 
-	<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+.sticky + .wrapper {
+  padding-top: 60px;
+}
+
+
+    </style>
+    
+
+	<nav id="navbar" class="navbar navbar-expand navbar-dark bg-dark static-top">
 
         <a class="navbar-brand mr-1" href="../../index.php" style="font-size: 16px;">
             <div class="row">

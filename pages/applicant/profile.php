@@ -98,9 +98,7 @@ if (isset($_SESSION["access"])){
             <li class="nav-item">
                 <a class="nav-link" href="about.php">Contact Us</a>
             </li>
-            <li class="nav-link">
-                <a>||</a>
-            </li>
+        
             <li class="nav-item dropdown no-arrow">
                 <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
             </li>
@@ -117,6 +115,9 @@ if (isset($_SESSION["access"])){
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="chat.php">Chat Employer</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="profile.php">
@@ -145,6 +146,9 @@ if (isset($_SESSION["access"])){
         </ul>
 
         <div id="content-wrapper">
+            
+           
+  
 
             <div class="container-fluid">
 
@@ -154,6 +158,105 @@ if (isset($_SESSION["access"])){
                     </li>
                     <li class="breadcrumb-item active">Profile</li>
                 </ol>
+                
+                
+                          
+                            
+                    <?php
+					require 'UPLOAD/conn.php';
+					$query = mysqli_query($conn, "SELECT *,COUNT(id) as TOTAL FROM `photo_upload` WHERE uid = '".$_SESSION['uid']."'") or die(mysqli_error());
+					while($fetch = mysqli_fetch_array($query)){
+				?>
+				
+			    <?php if($fetch['TOTAL'] == '1') { ?>
+			    
+			    <a href="#" data-toggle="modal" data-target="#edit<?php echo $fetch['id']?>"><img src="UPLOAD/<?php echo $fetch['photo']; ?>" style="width:10%;"></a>
+			    
+			    
+			    <div class="modal fade" id="edit<?php echo $fetch['id']?>" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form method="POST" enctype="multipart/form-data" action="UPLOAD/edit.php">
+				<div class="modal-header">
+					<h3 class="modal-title">EDIT PHOTO</h3>
+				</div>
+				<div class="modal-body">
+					<div class="col-md-2"></div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<h3>Current Photo</h3>
+							<img src="UPLOAD/<?php echo $fetch['photo']?>" height="120" width="150" />
+							<input type="hidden" name="previous" value="<?php echo $fetch['photo']?>"/>
+							<h3>New Photo</h3>
+							<input type="hidden" value="<?php echo $fetch['id']?>" name="id"/>
+							<input type="file" class="form-control" name="photo" value="<?php echo $fetch['photo']?>" required="required"/>
+						</div>
+					
+					</div>
+				</div>
+				<br style="clear:both;"/>
+				<div class="modal-footer">
+					<button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+					<button class="btn btn-warning" name="edit"><span class="glyphicon glyphicon-save"></span> Update</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>		
+                     
+                     
+			    
+			    <?php } else { ?>
+                     
+                     
+                     	 <button class="btn btn-success" type="button" data-toggle="modal" data-target="#form_modal"><span class="glyphicon glyphicon-plus"></span> ADD PROFILE</button>
+                     
+
+                     
+                     
+                     
+                     
+                <?php } ?>	
+                <?php } ?>	
+               
+    <div class="modal fade" id="form_modal" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form method="POST" action="UPLOAD/save.php" enctype="multipart/form-data">
+				<div class="modal-header">
+					<h3 class="modal-title">UPLOAD PHOTO</h3>
+				</div>
+				<div class="modal-body">
+					<div class="col-md-2"></div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>Photo</label>
+							<input type="file" class="form-control" name="photo" required="required" style="width:100%;">
+						</div>
+						
+						
+						<div class="form-group">
+							<input type="hidden" class="form-control" name="id" value="<?php echo $_SESSION['uid']; ?>" required="required"/>
+						</div>
+					</div>
+				</div>
+				<br style="clear:both;"/>
+				<div class="modal-footer">
+					<button class="btn btn-danger" type="button" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+					<button class="btn btn-primary" name="save"><span class="glyphicon glyphicon-save"></span> Save</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+  <span class="switch">
+                       <label>EDIT</label>
+                        <input type="checkbox" class="switch" id="switch-id" checked>
+                        <label for="switch-id"></label>
+                      </span>
+ 
+              <div class="contentA">
 
                 <div class="card mb-3">
                     <div class="card-header"><i class="fas fa-id-card-alt"></i> Profile</div>
@@ -219,14 +322,33 @@ if (isset($_SESSION["access"])){
                                 $A_AwardYear = $row['awards_year'];
                                     
                     ?>
+                    
+                 
+                    
                         <form method="post" action="../../php-func/applicant/FormApplicant2.php" novalidate>
                         <div class="card">
                             <div class="card-header"><i class="fas fa-id-card-alt"></i> I. Profile Information</div>
                             <div class=card-body>
                                 <div class="form-row">
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
                                     <div class="col-md-12">
+                                   
+                                   
                                         <label><strong>Personal Information</strong></label>
+                            
+                             <select id='purpose'>
+                                <option value="0">NO EDIT </option>
+                                <option value="1">APPROVE EDIT </option>
+                               
+                                </select>
+                                   
                                     </div>
+                                   
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="fs-1 mb-1" for="UpdateFirstName">Firstname</label>
@@ -695,7 +817,14 @@ if (isset($_SESSION["access"])){
                                 ?>
                                 <input type="hidden" name="uid" value="<?php echo $uid;?>">
                                 <?php } ?>
-                                <button type="submit" name="nextpage" class="btn btn-primary">Submit</button>
+                                
+                              
+                                <div style='display:none;' id='business'>
+                                
+                                    <button type="submit" name="nextpage" class="btn btn-primary">Save</button>
+                                </div>
+                                
+                               
                             </div>
                         </form>
                         <?php
@@ -703,6 +832,7 @@ if (isset($_SESSION["access"])){
                         ?>
                     </div>
                     <div class="card-footer"></div>
+                </div>
                 </div>
 
                 <div class="card mb-3">
@@ -746,8 +876,20 @@ if (isset($_SESSION["access"])){
                                     <?php
                                         }else{
                                     ?>
+                                    
+                                    
+                                    
+                                     
+                                     
+                                        
+                                     
+                                    
+                                    
                                         <div class="custom-file">
-                                            <input type="file" name="file" class="custom-file-input" id="inputGroupFile04">
+                                            
+                                             <input type="text" class="form-control" name="cv_name" readonly >
+                                            <label class="custom-file-label" for="inputGroupFile04">CV NAME</label>
+                                            <input type="file" name="file" class="custom-file-input" id="inputGroupFile04"  accept="application/pdf">
                                             <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
                                         </div>
                                         <p style="font-size: 12px; color:red;">*Upload PDF File Only</p>
@@ -760,7 +902,7 @@ if (isset($_SESSION["access"])){
                                 <input type="hidden" name="jid" value="<?php echo $jid; ?>">
                                 <input type="hidden" name="eid" value="<?php echo $eid; ?>">
                                 <input type="hidden" name="aid" value="<?php echo $_SESSION['uid']; ?>">
-                                <button type="submit" class="btn btn-primary btn-block">Apply</button>
+                                <button type="submit" class="btn btn-primary btn-block">UPLOAD</button>
                             </div>
                         </form>
                     </div>
@@ -968,9 +1110,157 @@ if (isset($_SESSION["access"])){
         //     }
         // });
     });
+    
+    
+    $(document).ready(function(){
+    $('#purpose').on('change', function() {
+      if ( this.value == '1')
+      {
+        $("#business").show();
+      }
+      else
+      {
+        $("#business").hide();
+      }
+    });
+});
+    
 </script>
 
+
+
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script><script  src="./script.js"></script>
+
+
+
 </body>
+
+
+
+
+<style>
+    
+.switch {
+  font-size: 1rem;
+  position: relative;
+}
+.switch input {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  background: none;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  padding: 0;
+}
+.switch input + label {
+  position: relative;
+  min-width: calc(calc(2.375rem * .8) * 2);
+  border-radius: calc(2.375rem * .8);
+  height: calc(2.375rem * .8);
+  line-height: calc(2.375rem * .8);
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  vertical-align: middle;
+  text-indent: calc(calc(calc(2.375rem * .8) * 2) + .5rem);
+}
+.switch input + label::before,
+.switch input + label::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(calc(2.375rem * .8) * 2);
+  bottom: 0;
+  display: block;
+}
+.switch input + label::before {
+  right: 0;
+  background-color: #dee2e6;
+  border-radius: calc(2.375rem * .8);
+  transition: 0.2s all;
+}
+.switch input + label::after {
+  top: 2px;
+  left: 2px;
+  width: calc(calc(2.375rem * .8) - calc(2px * 2));
+  height: calc(calc(2.375rem * .8) - calc(2px * 2));
+  border-radius: 50%;
+  background-color: white;
+  transition: 0.2s all;
+}
+.switch input:checked + label::before {
+  background-color: #08d;
+}
+.switch input:checked + label::after {
+  margin-left: calc(2.375rem * .8);
+}
+.switch input:focus + label::before {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 136, 221, 0.25);
+}
+.switch input:disabled + label {
+  color: #868e96;
+  cursor: not-allowed;
+}
+.switch input:disabled + label::before {
+  background-color: #e9ecef;
+}
+.switch.switch-sm {
+  font-size: 0.875rem;
+}
+.switch.switch-sm input + label {
+  min-width: calc(calc(1.9375rem * .8) * 2);
+  height: calc(1.9375rem * .8);
+  line-height: calc(1.9375rem * .8);
+  text-indent: calc(calc(calc(1.9375rem * .8) * 2) + .5rem);
+}
+.switch.switch-sm input + label::before {
+  width: calc(calc(1.9375rem * .8) * 2);
+}
+.switch.switch-sm input + label::after {
+  width: calc(calc(1.9375rem * .8) - calc(2px * 2));
+  height: calc(calc(1.9375rem * .8) - calc(2px * 2));
+}
+.switch.switch-sm input:checked + label::after {
+  margin-left: calc(1.9375rem * .8);
+}
+.switch.switch-lg {
+  font-size: 1.25rem;
+}
+.switch.switch-lg input + label {
+  min-width: calc(calc(3rem * .8) * 2);
+  height: calc(3rem * .8);
+  line-height: calc(3rem * .8);
+  text-indent: calc(calc(calc(3rem * .8) * 2) + .5rem);
+}
+.switch.switch-lg input + label::before {
+  width: calc(calc(3rem * .8) * 2);
+}
+.switch.switch-lg input + label::after {
+  width: calc(calc(3rem * .8) - calc(2px * 2));
+  height: calc(calc(3rem * .8) - calc(2px * 2));
+}
+.switch.switch-lg input:checked + label::after {
+  margin-left: calc(3rem * .8);
+}
+.switch + .switch {
+  margin-left: 1rem;
+}
+
+
+
+.contentA {
+  display: none;
+}    
+    
+    
+    
+</style>
 
 </html>
 <?php

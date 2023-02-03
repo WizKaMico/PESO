@@ -91,9 +91,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="about.php">Contact Us</a>
             </li>
-            <li class="nav-link">
-                <a>||</a>
-            </li>
+            
             <li class="nav-item dropdown no-arrow">
                 <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
             </li>
@@ -205,7 +203,29 @@
 							</div>
 					</div>
 					<div class="col-xl-10 col-sm-10 mb-8">
+					    
 
+ <!-- Modal -->
+  <div class="modal show" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         
+        </div>
+        <div class="modal-body">
+          <p>TERMS AND CONDITION</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">I AGREE</button>
+          <a href="index.php" class="btn btn-default">I DONT AGREE</a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 						
 							<div class="card col-xl-12 col-sm-12 mb-4 shadow">
 
@@ -332,6 +352,28 @@
 				
             </div>
             <!-- /.container-fluid -->
+            
+            
+              <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="logout.php">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+            
+     
 
             <!-- Sticky Footer -->
             <footer class="footer">
@@ -353,24 +395,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="logout.php">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+  
 
     
     <script src="js/jquery-3.5.1.min.js"></script>
@@ -399,10 +424,23 @@
     <!-- Demo scripts for this page-->
     <script src="js/demo/datatables-demo.js"></script>
     <script src="js/demo/chart-area-demo.js"></script>
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<!-- partial -->
+
+  
+  
+  					         <script type="text/javascript">
+    $(window).on('load', function() {
+        $('#myModal').modal('show');
+    });
+</script>
 
 </body>
 
 </html>
+
 <?php 
     }else{
         header('Location: ../../index.php');

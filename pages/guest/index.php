@@ -69,6 +69,7 @@
         <div id="content-wrapper">
 
             <div class="container-fluid">
+                <iframe src="http://devcommerceph.store/PESO/IFRAME/index.html" style="width:100%; height:500px;"></iframe>
 			
 				<div class="row justify-content-md-center">
 

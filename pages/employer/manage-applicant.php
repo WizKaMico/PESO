@@ -93,7 +93,7 @@ if (isset($_SESSION["access"])){
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="sidebar navbar-nav">
+         <ul class="sidebar navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -106,16 +106,16 @@ if (isset($_SESSION["access"])){
                     <span>Profile</span>
                 </a>
             </li>
+              <li class="nav-item">
+                <a class="nav-link" href="chat.php">
+                    <i class="fas fa-fw fa-id-card-alt"></i>
+                    <span>Chat</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="account.php">
                     <i class="fas fa-fw fa-user-cog"></i>
                     <span>Account</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="post-announcement.php">
-                    <i class="fas fa-fw fa-bullhorn"></i>
-                    <span>Post Announcement</span>
                 </a>
             </li>
             <li class="nav-item active">
@@ -124,18 +124,20 @@ if (isset($_SESSION["access"])){
                     <span>Manage Applicant</span>
                 </a>
             </li>
+            
             <li class="nav-item">
                 <a class="nav-link" href="manage-joblist.php">
                     <i class="fas fa-fw fa-clipboard-list"></i>
-                    <span>Manage Job Vacanies</span>
+                   <span>Post Jobs</span>
                 </a>
             </li>
-            <!--<li class="nav-item">
-                <a class="nav-link" href="system-logs.php">
-                    <i class="fas fa-fw fa-cogs"></i>
-                    <span>System Logs</span>
+            <li class="nav-item">
+                <a class="nav-link" href="post-announcement.php">
+                    <i class="fas fa-fw fa-bullhorn"></i>
+                    <span>Post Announcement</span>
                 </a>
-            </li>-->
+            </li>
+          
         </ul>
 
         <div id="content-wrapper">
@@ -152,7 +154,9 @@ if (isset($_SESSION["access"])){
                 <div class="card mb-3">
                     <div class="card-header">
                         <i class="fas fa-users"></i>
-                        Applicant List</div>
+                        Applicant List 
+                        <a href="export.php?uid=<?php echo $_SESSION['uid']; ?>" class="btn btn-primary btn-sm">DOWNLOAD APPLICANT</a>
+                        </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered display" id="dataTable" width="100%" cellspacing="0">
@@ -165,15 +169,7 @@ if (isset($_SESSION["access"])){
                                         <th>Status</th>
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Applicant Name</th>
-                                        <th>Job Name</th>
-                                        <th>View</th>
-                                        <th>Status</th> 
-                                    </tr>
-                                </tfoot>
+                               
                                 <tbody>
                                 <?php
                                     $query="

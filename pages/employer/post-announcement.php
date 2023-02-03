@@ -121,6 +121,12 @@ if (isset($_SESSION["access"])){
                     <span>Profile</span>
                 </a>
             </li>
+              <li class="nav-item">
+                <a class="nav-link" href="chat.php">
+                    <i class="fas fa-fw fa-id-card-alt"></i>
+                    <span>Chat</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="account.php">
                     <i class="fas fa-fw fa-user-cog"></i>
@@ -136,7 +142,7 @@ if (isset($_SESSION["access"])){
             <li class="nav-item">
                 <a class="nav-link" href="manage-joblist.php">
                     <i class="fas fa-fw fa-clipboard-list"></i>
-                    <span>Application Status</span>
+                    <span>Post Jobs</span>
                 </a>
             </li>
             <li class="nav-item active">
@@ -145,6 +151,7 @@ if (isset($_SESSION["access"])){
                     <span>Post Announcement</span>
                 </a>
             </li>
+            
             <!--<li class="nav-item">
                 <a class="nav-link" href="system-logs.php">
                     <i class="fas fa-fw fa-cogs"></i>
@@ -166,9 +173,9 @@ if (isset($_SESSION["access"])){
 
                 
                 <div class="card mb-3">
-                    <div class="card-header"><i class="fas fa-clipboard-list"></i> Post Announcement</div>
+                    <div class="card-header"></div>
                     <div class="card-body">
-                        <form action="../../php-func/employer/AddAnnouncementEmployer.php" method="post">
+                        <form action="ANNOUNCEMENT/save.php" method="post"  enctype="multipart/form-data">
                             <div class="card">
                             <div class="card-header"><i class="fas fa-clipboard"></i> Post Announcement </div>
                                 <div class=card-body>
@@ -184,10 +191,21 @@ if (isset($_SESSION["access"])){
                                             <textarea name="e_announcementdesc" class="form-control" id="jobdescription_textarea2" placeholder="Announcement" cols="30" rows="30"></textarea>
                                         </div>
                                     </div>
+                                    <div class="form-group mt-3">
+                                        <div class="form-label-group">
+                                       	<input type="file" class="form-control" name="photo" required="required"/>   
+                                     <label> photo </label>
+                                        </div>
+                                    </div>        
+                                    
+                                    
                                 </div>
                                 <div class="card-footer">    
-                                   <input type="submit" class="btn btn-primary add-confirm" value="Post Announcement">
+                                   <input type="submit" name="save" class="btn btn-primary" value="Post Announcement">
                                    <input type="hidden" name="e_id" id="hidden_eid" value="<?php echo $_SESSION['uid']; ?>">
+                                   <?php date_default_timezone_set('Asia/Manila'); ?>
+                                     <input type="hidden" name="announcement_date_posted" value="<?PHP echo date('Y-m-d') ?>">
+                                   <input type="hidden" name="status" value="FOR APPROVAL">
                                    <input type="hidden" name="id" id="hidden_eid" value="<?php echo $E_AId; ?>">
                                 </div>
                             </div>
@@ -206,18 +224,12 @@ if (isset($_SESSION["access"])){
                                     <tr>
                                         <th>No.</th>
                                         <th>Announcement</th>
+                                        <th>Status</th>
                                         <th>Edit</th>
                                         <th>Danger</th>
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Announcement</th>
-                                        <th>Edit</th>
-                                        <th>Danger</th>
-                                    </tr>
-                                </tfoot>
+                               
                                 <tbody>
                                 <?php
                                     $query = "SELECT *
@@ -233,11 +245,13 @@ if (isset($_SESSION["access"])){
                                         while($row = $result->fetch_assoc()){
                                             $E_Id = $row['id'];
                                             $E_JobName = $row['announcement_title'];
+                                            $E_Stat = $row['status'];
                                 ?>
 
                                     <tr>
                                         <td><?php echo $number;?></td>
                                         <td><?php echo $E_JobName;?></td>
+                                        <td><?php echo $E_Stat;?></td>
                                         <td>
                                             <button onclick="GetUpdateAnnouncementDetails(<?php echo $row['id'] ?>)" class="btn btn-primary">
                                                 <i class="fas fa-edit"></i> Edit

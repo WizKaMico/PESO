@@ -79,9 +79,7 @@ if(isset($_SESSION["access"])){
             <li class="nav-item">
                 <a class="nav-link" href="about.php">Contact Us</a>
             </li>
-            <li class="nav-link">
-                <a>||</a>
-            </li>
+            
             <li class="nav-item dropdown no-arrow">
                 <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
             </li>
@@ -98,6 +96,9 @@ if(isset($_SESSION["access"])){
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="chat.php">Chat Employer</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="profile.php">
@@ -154,14 +155,7 @@ if(isset($_SESSION["access"])){
                                         <th>Status</th>
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Job Title</th>
-                                        <th>Company</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </tfoot>
+                               
                                 <tbody>
                                 <?php
                                     $UserStatus = 'Employer';
@@ -202,7 +196,7 @@ if(isset($_SESSION["access"])){
                                         <td>
                                             <?php
                                             if($J_Apply == 'Applied'){
-                                                echo'<div class="btn btn-success btn-block active"><i class="fas fa-user-plus"></i> Applied</div>';
+                                                echo'<div class="btn btn-success btn-block active">Applied</div>';
                                             }elseif($J_Hiring == 'Hired'){
                                                 echo'<div class="btn btn-danger btn-block active"><i class="fas fa-user-times"></i></div>';
                                             }

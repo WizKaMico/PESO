@@ -11,6 +11,9 @@ if(isset($_POST['signup-submit'])){
     $UserStatus1 = "Employer";
     $UserStatus2 = "Activated";
     $UserStatus3 = "DeArchived";
+    $access = "1";
+    $fpassword=md5($Password1);
+    
     
     date_default_timezone_set('Asia/Manila');
     $RegisterTimestamp = " ".date('h:i:s a')." at ".date('Y/m/d')." ";
@@ -45,10 +48,15 @@ if(isset($_POST['signup-submit'])){
             $u_id = $mysqli->insert_id;
             $add_uid1 = "INSERT INTO employer_profile (uid, email) VALUES ('$u_id','$Email')";
             $add_uid2 = "INSERT INTO employer_company_profile (eid) VALUES ('$u_id')";
+            $add_uid3 = "INSERT INTO user (username, password, uname, access) VALUES ('$UserName','$fpassword', '$Email', '$access')";
+            
                 if (!$result = $mysqli->query($add_uid1)) {
                     exit($mysqli->error);
                 }
                 if (!$result = $mysqli->query($add_uid2)) {
+                    exit($mysqli->error);
+                }
+                  if (!$result = $mysqli->query($add_uid3)) {
                     exit($mysqli->error);
                 }
         }elseif(!$result = $mysqli->query($query1)) {

@@ -1,0 +1,29 @@
+[16-Feb-2022 02:22:56 UTC] PHP Notice:  Undefined index: uid in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 5
+[16-Feb-2022 02:25:38 UTC] PHP Parse error:  syntax error, unexpected 'seems' (T_STRING), expecting ',' or ';' in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 51
+[16-Feb-2022 02:28:48 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 65
+[16-Feb-2022 02:59:09 UTC] PHP Notice:  Undefined index: fname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 02:59:09 UTC] PHP Notice:  Undefined index: mname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 02:59:09 UTC] PHP Notice:  Undefined index: lname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 02:59:09 UTC] PHP Notice:  Undefined index: UID in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 114
+[16-Feb-2022 03:14:03 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/update_applicant_password.php on line 81
+[16-Feb-2022 03:14:03 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/update_applicant_password.php on line 82
+[16-Feb-2022 03:20:20 UTC] PHP Notice:  Undefined index: fname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 03:20:20 UTC] PHP Notice:  Undefined index: mname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 03:20:20 UTC] PHP Notice:  Undefined index: lname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 03:20:20 UTC] PHP Notice:  Undefined index: UID in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 114
+[16-Feb-2022 10:18:56 UTC] PHP Notice:  Undefined index: fname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 10:18:56 UTC] PHP Notice:  Undefined index: mname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 10:18:56 UTC] PHP Notice:  Undefined index: lname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 10:18:56 UTC] PHP Notice:  Undefined index: UID in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 114
+[16-Feb-2022 10:31:28 UTC] PHP Notice:  Undefined index: fname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 10:31:28 UTC] PHP Notice:  Undefined index: mname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 10:31:28 UTC] PHP Notice:  Undefined index: lname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 10:31:28 UTC] PHP Notice:  Undefined index: UID in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 114
+[16-Feb-2022 14:21:14 UTC] PHP Notice:  Undefined index: fname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 14:21:14 UTC] PHP Notice:  Undefined index: mname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 14:21:14 UTC] PHP Notice:  Undefined index: lname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 14:21:14 UTC] PHP Notice:  Undefined index: UID in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 114
+[16-Feb-2022 15:13:03 UTC] PHP Notice:  Undefined index: fname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 15:13:03 UTC] PHP Notice:  Undefined index: mname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 15:13:03 UTC] PHP Notice:  Undefined index: lname in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 107
+[16-Feb-2022 15:13:03 UTC] PHP Notice:  Undefined index: UID in /home/u729926683/domains/devcommerceph.store/public_html/PESO/pages/login/applicant_generate_code.php on line 114

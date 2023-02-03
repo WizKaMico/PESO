@@ -119,6 +119,9 @@ if (isset($_SESSION["access"])){
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="chat.php">Chat Employer</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="profile.php">
                     <i class="fas fa-fw fa-id-card-alt"></i>
                     <span>Profile</span>
@@ -183,7 +186,15 @@ if (isset($_SESSION["access"])){
                                     $A_Password = $row['password'];
                                     $A_Email = $row['email']
                     ?>
-                        <form action="../../php-func/applicant/UpdateApplicantAccount.php" method="post">
+                   
+                     <span class="switch">
+                       <label>EDIT</label>
+                        <input type="checkbox" class="switch" id="switch-id" checked>
+                        <label for="switch-id"></label>
+                      </span> 
+                   
+                    <div class="contentA">
+                        <form action="../../php-func/applicant/UpdateApplicantAccount.php" method="post"  id="box">
                             <div class="card">
                             <div class="card-header"><i class="fas fa-user-cog"></i> Reset Account </div>
                                 <div class=card-body>
@@ -214,9 +225,47 @@ if (isset($_SESSION["access"])){
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit"   class="btn btn-primary mt-3 account-secure-submit">Update</button>
+                            <button type="submit"   class="btn btn-primary mt-3 account-secure-submit">Save</button>
                             <input type="hidden" name="e_id" id="hidden_e_id" value="<?php echo $E_Id ?>">
                         </form>
+                        </div>
+                        
+                           <div class="contentB">
+                        <form action="../../php-func/applicant/UpdateApplicantAccount.php" method="post"  id="box">
+                            <div class="card">
+                            <div class="card-header"><i class="fas fa-user-cog"></i> Reset Account </div>
+                                <div class=card-body>
+                                <div class="form-group mt-3">
+                                        <div class="form-label-group">
+                                            <input type="text" name="a_username" id="UpdateUsername" class="form-control" placeholder="Username"  value="<?php echo $A_Email; ?>" varequired="required" readonly="">
+                                            <label for="UpdateUsername">Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <div class="form-label-group">
+                                            <input type="text" name="e_username" id="UpdateUsername" class="form-control" placeholder="Username"  value="<?php echo $A_UserName; ?>" varequired="required" readonly="">
+                                            <label for="UpdateUsername">Username</label>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group mt-3">
+                                        <div class="form-label-group">
+                                            <input type="password" name="e_pass1" id="UpdatePassword1" class="form-control" placeholder="Password" value="<?php echo $A_Password; ?>" readonly="">
+                                            <label for="UpdatePassword1">Password</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <div class="form-label-group">
+                                            <input type="password" name="e_pass2" id="UpdatePassword2" class="form-control" placeholder="Confirm Password" readonly="">
+                                            <label for="UpdatePassword2">Confirm Password</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit"   class="btn btn-primary mt-3 account-secure-submit">Save</button>
+                            <input type="hidden" name="e_id" id="hidden_e_id" value="<?php echo $E_Id ?>">
+                        </form>
+                        </div>
                         <?php
                             }
                         ?>
@@ -298,10 +347,150 @@ if (isset($_SESSION["access"])){
             $('table.display').DataTable();
         });
     </script>
+    
+    
+        <!-- Custom Javascript for DataTables-->
+    <script>
+        $(document).ready(function() {
+            $('table.display').DataTable();
+        });
+    </script>
+    
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script><script  src="./script.js"></script>
+
+    
+    
+    
+   
 
 </body>
 
 </html>
+
+<style>
+    
+.switch {
+  font-size: 1rem;
+  position: relative;
+}
+.switch input {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  background: none;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  padding: 0;
+}
+.switch input + label {
+  position: relative;
+  min-width: calc(calc(2.375rem * .8) * 2);
+  border-radius: calc(2.375rem * .8);
+  height: calc(2.375rem * .8);
+  line-height: calc(2.375rem * .8);
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  vertical-align: middle;
+  text-indent: calc(calc(calc(2.375rem * .8) * 2) + .5rem);
+}
+.switch input + label::before,
+.switch input + label::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(calc(2.375rem * .8) * 2);
+  bottom: 0;
+  display: block;
+}
+.switch input + label::before {
+  right: 0;
+  background-color: #dee2e6;
+  border-radius: calc(2.375rem * .8);
+  transition: 0.2s all;
+}
+.switch input + label::after {
+  top: 2px;
+  left: 2px;
+  width: calc(calc(2.375rem * .8) - calc(2px * 2));
+  height: calc(calc(2.375rem * .8) - calc(2px * 2));
+  border-radius: 50%;
+  background-color: white;
+  transition: 0.2s all;
+}
+.switch input:checked + label::before {
+  background-color: #08d;
+}
+.switch input:checked + label::after {
+  margin-left: calc(2.375rem * .8);
+}
+.switch input:focus + label::before {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 136, 221, 0.25);
+}
+.switch input:disabled + label {
+  color: #868e96;
+  cursor: not-allowed;
+}
+.switch input:disabled + label::before {
+  background-color: #e9ecef;
+}
+.switch.switch-sm {
+  font-size: 0.875rem;
+}
+.switch.switch-sm input + label {
+  min-width: calc(calc(1.9375rem * .8) * 2);
+  height: calc(1.9375rem * .8);
+  line-height: calc(1.9375rem * .8);
+  text-indent: calc(calc(calc(1.9375rem * .8) * 2) + .5rem);
+}
+.switch.switch-sm input + label::before {
+  width: calc(calc(1.9375rem * .8) * 2);
+}
+.switch.switch-sm input + label::after {
+  width: calc(calc(1.9375rem * .8) - calc(2px * 2));
+  height: calc(calc(1.9375rem * .8) - calc(2px * 2));
+}
+.switch.switch-sm input:checked + label::after {
+  margin-left: calc(1.9375rem * .8);
+}
+.switch.switch-lg {
+  font-size: 1.25rem;
+}
+.switch.switch-lg input + label {
+  min-width: calc(calc(3rem * .8) * 2);
+  height: calc(3rem * .8);
+  line-height: calc(3rem * .8);
+  text-indent: calc(calc(calc(3rem * .8) * 2) + .5rem);
+}
+.switch.switch-lg input + label::before {
+  width: calc(calc(3rem * .8) * 2);
+}
+.switch.switch-lg input + label::after {
+  width: calc(calc(3rem * .8) - calc(2px * 2));
+  height: calc(calc(3rem * .8) - calc(2px * 2));
+}
+.switch.switch-lg input:checked + label::after {
+  margin-left: calc(3rem * .8);
+}
+.switch + .switch {
+  margin-left: 1rem;
+}
+
+
+
+.contentA {
+  display: none;
+}    
+    
+    
+    
+</style>
+
 <?php
 } else {
     header('Location: ../login/applicantlogin.php');

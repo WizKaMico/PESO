@@ -56,14 +56,9 @@ if (isset($_SESSION["access"])){
                 <a class="nav-link" href="announcement.php">Announcement</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="about.php">About Us</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="contact.php">Contact Us</a>
             </li>
-            <li class="nav-link">
-                <a>||</a>
-            </li>
+            
             <li class="nav-item dropdown no-arrow">
                 <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
             </li>
@@ -87,6 +82,12 @@ if (isset($_SESSION["access"])){
                     <span>Profile</span>
                 </a>
             </li>
+              <li class="nav-item">
+                <a class="nav-link" href="chat.php">
+                    <i class="fas fa-fw fa-id-card-alt"></i>
+                    <span>Chat</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="account.php">
                     <i class="fas fa-fw fa-user-cog"></i>
@@ -96,7 +97,7 @@ if (isset($_SESSION["access"])){
             <li class="nav-item">
                 <a class="nav-link" href="post-announcement.php">
                     <i class="fas fa-fw fa-bullhorn"></i>
-                    <span>Post Announcement</span>
+                    <span>Post Jobs</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -141,7 +142,7 @@ if (isset($_SESSION["access"])){
 
                 <div class="row">
                 <?php 
-                    $asql = $mysqli->query("SELECT COUNT(id) AS totalapplicant FROM applicant_profile");
+                    $asql = $mysqli->query("SELECT COUNT(employer_vacancy_profile.id) as TOTAL FROM `employer_vacancy_profile` LEFT JOIN applicant_vacancy_file ON employer_vacancy_profile.eid = applicant_vacancy_file.eid WHERE employer_vacancy_profile.eid = 52");
                     $adata=mysqli_fetch_assoc($asql);
 
                     $jsql = $mysqli->query("SELECT COUNT(id) AS totaljob FROM employer_vacancy_profile WHERE eid = '".$_SESSION['uid']."'");
@@ -157,7 +158,7 @@ if (isset($_SESSION["access"])){
                                 <div class="card-body-icon">
                                     <i class="fas fa-fw fa-user-tie"></i>
                                 </div>
-                                <div class="mr-5 font-weight-bold"><?php echo $adata['totalapplicant']; ?></div>
+                                <div class="mr-5 font-weight-bold"><?php echo $adata['TOTAL']; ?></div>
                                 <div class="mr-5">Total Applicant</div>
                             </div>
                                 <a class="card-footer text-white clearfix small z-1" href="manage-applicant.php">
@@ -219,13 +220,7 @@ if (isset($_SESSION["access"])){
                                         <th>Status</th>
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Job Name</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </tfoot>
+                              
                                 <tbody>
                                 <?php
                                 $query="SELECT *
@@ -253,7 +248,7 @@ if (isset($_SESSION["access"])){
                                             if($E_JobStatus == 'Hiring'){
                                                 echo'<div class="btn btn-success btn-block active"><i class="fas fa-user-plus"></i> Hiring</div>';
                                             }elseif($E_JobStatus == 'Hired'){
-                                                echo'<div class="btn btn-danger btn-block active"><i class="fas fa-user-slash"></i> Hired</div>';
+                                                echo'<div class="btn btn-success btn-block active"><i class="fas fa-user-slash"></i> FOR INTERVIEW</div>';
                                             }
                                             ?>
                                         </td>

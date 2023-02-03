@@ -34,6 +34,7 @@ if(isset($_SESSION["access"])){
 
     <!--Custom CSS for Gallery for this page-->
     <link href="../../css/customstyle.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 
 </head>
@@ -104,10 +105,30 @@ if(isset($_SESSION["access"])){
                     ?>
 
 <body id="page-top">
+ 
+   
+    <style>
+    
+    
+        
+#navbar {
+	position: -webkit-sticky;
+	position: sticky;
+ top: 0px; /* When the element reaches top: 10px, it becomes fixed. */
+  z-index: 100;
+}
 
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+.sticky + .wrapper {
+  padding-top: 60px;
+}
 
-        <a class="navbar-brand mr-1" href="../../index.php" style="font-size: 16px;">
+
+    </style>
+    
+
+    <nav id="navbar" class="navbar navbar-expand navbar-dark bg-dark">
+
+        <a class="navbar-brand mr-1" href="index.php" style="font-size: 16px;">
             <div class="row">
                 <div class="col-2"><img src="../../images/pesologo.png" alt="Logo.png" width="60px;"></div>
                 <div class="col-10 align-self-center" style="font-size: 18px;">Public Employment Service Office - Malolos</div>
@@ -133,8 +154,11 @@ if(isset($_SESSION["access"])){
 
         <!-- Navbar -->
         <ul class="navbar-nav ml-auto ml-md-0">
-            <li class="nav-item">
+             <li class="nav-item">
                 <a class="nav-link active" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="chat.php">Chat Employer</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="dashboard.php">Dashboard</a>
@@ -142,15 +166,11 @@ if(isset($_SESSION["access"])){
             <li class="nav-item">
                 <a class="nav-link" href="announcement.php">Announcement</a>
             </li>
+          
             <li class="nav-item">
-                <a class="nav-link" href="about.php">About Us</a>
+                <a class="nav-link" href="contact.php">Contact Us</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="about.php">Contact Us</a>
-            </li>
-            <li class="nav-link">
-                <a>||</a>
-            </li>
+           
             <li class="nav-item dropdown no-arrow">
                 <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
             </li>
@@ -158,13 +178,13 @@ if(isset($_SESSION["access"])){
 
     </nav>
 
-    <div id="wrapper">
+    <div id="wrapper" style="padding: 16px;">
 
         <div id="content-wrapper">
 
             <div class="container-fluid">
 
-                <div class="row justify-content-md-center">
+                <div  class="row justify-content-md-center">
 
                     <div class="col-xl-10 col-sm-10 mb-1">
                         <div class="card col-xl-12 col-sm-12 mb-4 shadow">
@@ -172,100 +192,41 @@ if(isset($_SESSION["access"])){
                                 <h5>Hi! <?php echo $A_FName; ?></h5>
                                 <?php date_default_timezone_set('Asia/Manila') ?>
                                 <p><?php echo date('F d Y h:i:sa'); ?></p>
-                                <form action="result.php" method="post">
-                                    <div class="col-xl-12 col-sm-12 mb-12">
+                                <form class="form-inline" method="POST" action="index.php">
+                                    <div class="col-xl-11 col-sm-12 mb-12">
                                             <div class="row justify-content-md-center">
-                                                <div class="col-xl-5 col-sm-6 mb-6 p-2">
-                                                    <label>Search Job </label>
-                                                    <input type="text" class="col-xl-12 col-sm-12 mb-12 w-100" placeholder="Search Job Here">      
+                                                <div class="col-xl-12 col-sm-6 mb-6 p-2">
+                                                  
+                                                    <input type="text" name="job_title" class="form-control" placeholder="Search Job Here" style="width:100%;">    
+                                                    
                                                 </div>
-                                                <div class="col-xl-5 col-sm-6 mb-6 p-2">
-                                                    <label>Location</label>
-                                                    <input type="text" class="col-xl-12 col-sm-12 mb-12 w-100" placeholder="Location">
-                                                </div>
+                                               
                                             </div>
                                         </div>
-                                        <div class="col-xl-12 col-sm-12 mb-12">
-                                            <div class="row justify-content-md-center">
-                                                <div class="col-xl-2 col-sm-4 mb-4 p-2">
-                                                    <div class="form-group">
-                                                        <label for="SalaryGrade">Salary Min</label>
-                                                        <select class="form-control" id="SalaryGradeMin" placeholder="Salary Grade">
-                                                            <option selected>Salary Min</option>
-                                                            <?php
-                                                                $SalarySelect = $mysqli->query("SELECT * FROM salary_grade");
-                                                                while($salary = $SalarySelect->fetch_assoc()){
-                                                                    $salarygraderow = $salary['salary_grade'];
-                                                                    $salaryrow = $salary['salary_range'];
-                                                
-                                                                    echo"<option value='$salarygraderow'>$salaryrow</option><\n>";
-                                                                }
-                                                            ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-2 col-sm-4 mb-4 p-2">
-                                                    <div class="form-group">
-                                                        <label for="SalaryGrade">Salary Max</label>
-                                                        <select class="form-control" id="SalaryGradeMax" placeholder="Salary Grade">
-                                                            <option selected>Salary Max</option>
-                                                            <?php
-                                                                $SalarySelect = $mysqli->query("SELECT * FROM salary_grade");
-                                                                while($salary = $SalarySelect->fetch_assoc()){
-                                                                    $salarygraderow = $salary['salary_grade'];
-                                                                    $salaryrow = $salary['salary_range'];
-                                                
-                                                                    echo"<option value='$salarygraderow'>$salaryrow</option><\n>";
-                                                                }
-                                                            ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-3 col-sm-4 mb-4 p-2">
-                                                    <div class="form-group">
-                                                        <label for="SalaryGrade">Job Type</label>
-                                                        <select class="form-control" id="JobType" placeholder="Job Type">
-                                                            <option selected>Job Type</option>
-                                                            <?php
-                                                                $JobTypeSelect = $mysqli->query("SELECT * FROM job_type");
-                                                                while($job = $JobTypeSelect->fetch_assoc()){
-                                                                    $jobtyperow = $job['job_type'];
-                                                                    $jobrow = $job['job_type'];
-                                                
-                                                                    echo"<option value='$jobtyperow'>$jobrow</option><\n>";
-                                                                }
-                                                            ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-3 col-sm-4 mb-4 p-2">
-                                                    <div class="form-group">
-                                                        <label for="SalaryGrade">Employment Type</label>
-                                                        <select class="form-control" id="EmploymentType" placeholder="Employment Type">
-                                                            <option selected>Employment Type</option>
-                                                            <?php
-                                                                $CareerSelect = $mysqli->query("SELECT * FROM career_type");
-                                                                while($career = $CareerSelect->fetch_assoc()){
-                                                                    $careernamerow = $career['career_name'];
-                                                                    $careerrow = $career['career_name'];
-                                                
-                                                                    echo"<option value='$careernamerow'>$careerrow</option><\n>";
-                                                                }
-                                                            ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="col-xl-12 col-sm-12 mb-12" style="padding-right : 110px; padding-left : 110px;">
-                                        <button type="submit" class="btn btn-primary btn-block">Search</button>
+                                  
+                                    <div class="col-xl-1 col-sm-12 mb-12" style="width:100%;">
+                                        <button type="submit" name="search" class="btn btn-primary btn-block"><i class="fas fa-search"></i></button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
+                    
+                  
+                    
+                     <div class="col-xl-10 col-sm-10 mb-8">
+
+                        <div class="card col-xl-12 col-sm-12 mb-4 shadow">
+
+                            <div class="card-body">
+
+                                <?php include 'view-search.php'?>
+                        
+                            </div>
+                        </div>
+
+                    </div>
+                    
                     <div class="col-xl-10 col-sm-10 mb-8">
 
                         <div class="card col-xl-12 col-sm-12 mb-4 shadow">
@@ -298,6 +259,8 @@ if(isset($_SESSION["access"])){
 
     </div>
     <!-- /#wrapper -->
+    
+
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">

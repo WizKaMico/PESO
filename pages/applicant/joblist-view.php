@@ -78,101 +78,49 @@
 			
 				<div class="row justify-content-md-center">
 
-					<div class="col-xl-10 col-sm-10 mb-8">
-							<div class="card col-xl-12 col-sm-12 mb-4 shadow">
-								<div class="card-body">
-									<form action="">
-										<div class="col-xl-12 col-sm-12 mb-12">
-												<div class="row justify-content-md-center">
-													<div class="col-xl-5 col-sm-6 mb-6 p-2">
-														<input type="text" class="col-xl-12 col-sm-12 mb-12 w-100" placeholder="Search Job Here">      
-													</div>
-													<div class="col-xl-5 col-sm-6 mb-6 p-2">
-														<input type="text" class="col-xl-12 col-sm-12 mb-12 w-100" placeholder="Location">
-													</div>
-												</div>
-											</div>
-											<div class="col-xl-12 col-sm-12 mb-12">
-												<div class="row justify-content-md-center">
-													<div class="col-xl-2 col-sm-4 mb-4 p-2">
-														<div class="form-group">
-															<label for="SalaryGrade">Salary Min</label>
-															<select class="form-control" id="SalaryGradeMin" placeholder="Salary Grade">
-																<option selected>Salary Min</option>
-																<?php
-																	$SalarySelect = $mysqli->query("SELECT * FROM salary_grade");
-																	while($salary = $SalarySelect->fetch_assoc()){
-																		$salarygraderow = $salary['salary_grade'];
-																		$salaryrow = $salary['salary_range'];
-													
-																		echo"<option value='$salarygraderow'>$salaryrow</option><\n>";
-																	}
-																?>
-															</select>
-														</div>
-													</div>
-													<div class="col-xl-2 col-sm-4 mb-4 p-2">
-														<div class="form-group">
-															<label for="SalaryGrade">Salary Max</label>
-															<select class="form-control" id="SalaryGradeMax" placeholder="Salary Grade">
-																<option selected>Salary Max</option>
-																<?php
-																	$SalarySelect = $mysqli->query("SELECT * FROM salary_grade");
-																	while($salary = $SalarySelect->fetch_assoc()){
-																		$salarygraderow = $salary['salary_grade'];
-																		$salaryrow = $salary['salary_range'];
-													
-																		echo"<option value='$salarygraderow'>$salaryrow</option><\n>";
-																	}
-																?>
-															</select>
-														</div>
-													</div>
-													<div class="col-xl-3 col-sm-4 mb-4 p-2">
-														<div class="form-group">
-															<label for="SalaryGrade">Job Type</label>
-															<select class="form-control" id="JobType" placeholder="Job Type">
-																<option selected>Job Type</option>
-																<?php
-																	$JobTypeSelect = $mysqli->query("SELECT * FROM job_type");
-																	while($job = $JobTypeSelect->fetch_assoc()){
-																		$jobtyperow = $job['job_type'];
-																		$jobrow = $job['job_type'];
-													
-																		echo"<option value='$jobtyperow'>$jobrow</option><\n>";
-																	}
-																?>
-															</select>
-														</div>
-													</div>
-													<div class="col-xl-3 col-sm-4 mb-4 p-2">
-														<div class="form-group">
-															<label for="SalaryGrade">Employment Type</label>
-															<select class="form-control" id="EmploymentType" placeholder="Employment Type">
-																<option selected>Employment Type</option>
-																<?php
-																	$CareerSelect = $mysqli->query("SELECT * FROM career_type");
-																	while($career = $CareerSelect->fetch_assoc()){
-																		$careernamerow = $career['career_name'];
-																		$careerrow = $career['career_name'];
-													
-																		echo"<option value='$careernamerow'>$careerrow</option><\n>";
-																	}
-																?>
-															</select>
-														</div>
-													</div>
+                       <div class="col-xl-10 col-sm-10 mb-1">
+                        <div class="card col-xl-12 col-sm-12 mb-4 shadow">
+                            <div class="card-body">
+                               
+                                <?php date_default_timezone_set('Asia/Manila') ?>
+                                <p><?php echo date('F d Y h:i:sa'); ?></p>
+                                <form class="form-inline" method="POST" action="index.php">
+                                    <div class="col-xl-11 col-sm-12 mb-12">
+                                            <div class="row justify-content-md-center">
+                                                <div class="col-xl-12 col-sm-6 mb-6 p-2">
+                                                  
+                                                    <input type="text" name="job_title" class="form-control" placeholder="Search Job Here" style="width:100%;">    
+                                                    
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                  
+                                    <div class="col-xl-1 col-sm-12 mb-12" style="width:100%;">
+                                        <button type="submit" name="search" class="btn btn-primary btn-block"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                  
+                    
+                     <div class="col-xl-10 col-sm-10 mb-8">
 
-											</div>
+                        <div class="card col-xl-12 col-sm-12 mb-4 shadow">
 
-										</div>
-										<div class="col-xl-12 col-sm-12 mb-12" style="padding-right : 110px; padding-left : 110px;">
-											<button type="submit" class="btn btn-primary btn-block">Search</button>
-										</div>
-									</form>
-								</div>
-							</div>
-					</div>
+                            <div class="card-body">
+
+                                <?php include 'view-search.php'?>
+                        
+                            </div>
+                        </div>
+
+                    </div>
+                    
+
+					
 					<div class="col-xl-10 col-sm-10 mb-8">
 
 						

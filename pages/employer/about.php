@@ -45,9 +45,6 @@
                 <a class="nav-link active" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="dashboard.php">Dashboard</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="announcement.php">Announcement</a>
             </li>
             <li class="nav-item active">

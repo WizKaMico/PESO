@@ -1,5 +1,8 @@
 <?php
 error_reporting(E_ALL ^ E_DEPRECATED);
+
+
+
 if(isset($_POST['signup-submit'])){
     session_start();
     include('../conn.php');
@@ -11,6 +14,20 @@ if(isset($_POST['signup-submit'])){
     $UserStatus1 = "Applicant";
     $UserStatus2 = "Activated";
     $UserStatus3 = "DeArchived";
+    $access = "2";
+    
+    $fpassword=md5($Password1);
+    
+    $from = "devpayment@devcommerce.store";
+    $to = $Email;
+    $subject = "WELCOME TO PESO MALOLOS | APPLICANT | ". $UserName;
+    $message = "";
+    $headers = "From:" . $from;
+    if(mail($to,$subject,$message, $headers)) {
+   
+    } else {
+      
+    }
     
     date_default_timezone_set('Asia/Manila');
     $RegisterTimestamp = " ".date('h:i:s a')." at ".date('Y/m/d')." ";
@@ -43,6 +60,7 @@ if(isset($_POST['signup-submit'])){
             $add_uid2 = "INSERT INTO applicant_employment_profile (aid) VALUES ('$u_id')";
             $add_uid3 = "INSERT INTO applicant_education_profile (aid) VALUES ('$u_id')";
             $add_uid4 = "INSERT INTO applicant_preference_profile (aid) VALUES ('$u_id')";
+            $add_uid5 = "INSERT INTO user (username, password, uname, access) VALUES ('$UserName','$fpassword', '$Email', '$access')";
                 if (!$result = $mysqli->query($add_uid1)) {
                     exit($mysqli->error);
                 }
@@ -53,6 +71,9 @@ if(isset($_POST['signup-submit'])){
                     exit($mysqli->error);
                 }
                 if (!$result = $mysqli->query($add_uid4)) {
+                    exit($mysqli->error);
+                }
+                if (!$result = $mysqli->query($add_uid5)) {
                     exit($mysqli->error);
                 }
         }elseif(!$result = $mysqli->query($query1)) {
@@ -81,6 +102,24 @@ if(isset($_POST['signup-submit'])){
                 exit();
             }
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
+    
+    
+
+    
 }
 ?>

@@ -65,24 +65,23 @@ if(isset($_SESSION["access"])){
 
         <!-- Navbar -->
         <ul class="navbar-nav ml-auto ml-md-0">
-            <li class="nav-item">
+             <li class="nav-item">
                 <a class="nav-link" href="index.php">Home</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="dashboard.php">Dashboard</a>
+            <li class="nav-item">
+                <a class="nav-link" href="chat.php">Chat Employer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="dashboard.php">Dashboard</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="announcement.php">Announcement</a>
             </li>
+          
             <li class="nav-item">
-                <a class="nav-link" href="about.php">About Us</a>
+                <a class="nav-link" href="contact.php">Contact Us</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="about.php">Contact Us</a>
-            </li>
-            <li class="nav-link">
-                <a>||</a>
-            </li>
+            
             <li class="nav-item dropdown no-arrow">
                 <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
             </li>
@@ -99,6 +98,9 @@ if(isset($_SESSION["access"])){
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="chat.php">Chat Employer</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="profile.php">
@@ -140,8 +142,7 @@ if(isset($_SESSION["access"])){
 
 
 
-                <div class="row justify-content-md-center">
-                    </div>
+                 <div class="row justify-content-md-center">
                     <div class="col-xl-10 col-sm-10 mb-8">
                     <div class="card mb-3">
                     <div class="card-header">
@@ -158,29 +159,22 @@ if(isset($_SESSION["access"])){
                                         <th>Status</th>
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Job Title</th>
-                                        <th>Company</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </tfoot>
+                             
                                 <tbody>
                                 <?php
                                     $UserStatus = 'Employer';
                                     $query = "
-                                        SELECT *
-                                        FROM employer_vacancy_applicant 
-                                        RIGHT JOIN employer_vacancy_profile 
-                                        ON employer_vacancy_profile.eid = employer_vacancy_applicant.eid
-                                        RIGHT JOIN employer_profile 
-                                        ON employer_vacancy_profile.eid = employer_profile.uid
-                                        RIGHT JOIN employer_company_profile 
-                                        ON employer_vacancy_profile.eid = employer_company_profile.eid
-                                        WHERE employer_vacancy_applicant.aid = '".$_SESSION['uid']."'
-                                        OR employer_vacancy_applicant.eid = '".$_SESSION['uid']."'
-                                        GROUP BY employer_vacancy_applicant.jid
+                                    SELECT *
+                                    FROM employer_vacancy_applicant
+                                    RIGHT JOIN applicant_profile
+                                    ON employer_vacancy_applicant.aid = applicant_profile.uid
+                                    RIGHT JOIN employer_vacancy_profile
+                                    ON employer_vacancy_applicant.jid = employer_vacancy_profile.id
+                                    RIGHT JOIN employer_company_profile
+                                    ON employer_vacancy_profile.eid = employer_company_profile.eid
+                                    WHERE employer_vacancy_applicant.aid = '".$_SESSION['uid']."'
+                                    OR employer_vacancy_applicant.eid = '".$_SESSION['uid']."'
+                                    GROUP BY employer_vacancy_applicant.jid
                                         
                                     ";
                                     if (!$result = $mysqli->query($query)){
@@ -206,9 +200,9 @@ if(isset($_SESSION["access"])){
                                         <td>
                                             <?php
                                             if($J_Apply == 'Applied'){
-                                                echo'<div class="btn btn-success btn-block active"><i class="fas fa-user-plus"></i> Hiring</div>';
+                                                echo'<div class="btn btn-success btn-block active">Applied</div>';
                                             }elseif($J_Hiring == 'Hired'){
-                                                echo'<div class="btn btn-danger btn-block active"><i class="fas fa-user-times"></i> Hired</div>';
+                                                echo'<div class="btn btn-success btn-block active"><i class="fas fa-user-times"></i>FOR INTERVIEW</div>';
                                             }
                                             ?>
                                         </td>
@@ -227,6 +221,7 @@ if(isset($_SESSION["access"])){
                 </div>
                     </div>
                 </div>
+                
                 
 
             </div>

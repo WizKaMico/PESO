@@ -65,24 +65,24 @@ if(isset($_SESSION["access"])){
 
         <!-- Navbar -->
         <ul class="navbar-nav ml-auto ml-md-0">
+               <li class="nav-item">
+                <a class="nav-link" href="index.php">Home</a>
+            </li>
             <li class="nav-item">
-                <a class="nav-link active" href="index.php">Home</a>
+                <a class="nav-link" href="chat.php">Chat Employer</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="dashboard.php">Dashboard</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="announcement.php">Announcement</a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link" href="about.php">About Us</a>
+                <a class="nav-link active" href="announcement.php">Announcement</a>
             </li>
+          
             <li class="nav-item">
-                <a class="nav-link" href="about.php">Contact Us</a>
+                <a class="nav-link" href="contact.php">Contact Us</a>
             </li>
-            <li class="nav-link">
-                <a>||</a>
-            </li>
+            
+          
             <li class="nav-item dropdown no-arrow">
                 <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
             </li>
@@ -103,45 +103,33 @@ if(isset($_SESSION["access"])){
                         <div class="card col-xl-12 col-sm-12 mb-4 shadow">
 
                             <div class="card-body">
-
-                            <?php
-                            $query="
-                            SELECT *
-                            FROM employer_announcement 
-                            ORDER BY announcement_date_posted DESC 
-                            LIMIT 5 ";
-                            if (!$result = $mysqli->query($query)){
-                                exit($mysqli->error);
-                            }
-                            if($result->num_rows > 0){
-                                
-                                while($row = $result->fetch_assoc()){
-                                    $A_Title = $row['announcement_title'];
-                                    $A_Desc = $row['announcement_description'];
-                                    $A_Date = $row['announcement_date_posted'];
-                            ?>
-
-
+ 
+                          <?php include('ann_pagination.php'); ?>
+                          <?php while($crow = mysqli_fetch_array($nquery)){ ?>
+				
                             <div class="card m-4 shadow ">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-xl-12 col-sm-12">
-                                            <div style="font-size:20px;"><strong><?php echo $A_Title;?></strong></div>
+                                         <div class="col-xl-12 col-sm-12">
+                                            <img src="http://devcommerceph.store/PESO/pages/employer/ANNOUNCEMENT/<?php echo $crow['photo']; ?>" style="width:50%;">
                                         </div>
                                         <div class="col-xl-12 col-sm-12">
-                                            <div style="font-size:18px;"><label><?php echo $A_Desc;?></label></div>
+                                            <div style="font-size:20px;"><strong><?php echo $crow['announcement_title']; ?></strong></div>
                                         </div>
                                         <div class="col-xl-12 col-sm-12">
-                                            <div style="font-size: 16px;"><label><?php echo $A_Date;?></label></div>
+                                            <div style="font-size:18px;"><label><?php echo $crow['announcement_description']; ?></label></div>
+                                        </div>
+                                        <div class="col-xl-12 col-sm-12">
+                                            <div style="font-size: 16px;"><label><?php echo $crow['announcement_date_posted']; ?></label></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <?php
-                                }
-                            }
-                            ?>
+                            <?php } ?>
+                            
+                            <div id="pagination_controls"><?php echo $paginationCtrls; ?></div>
+	
                         
                             </div>
                         </div>
